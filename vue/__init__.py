@@ -1,0 +1,1 @@
+""" Partie Vue du package """
