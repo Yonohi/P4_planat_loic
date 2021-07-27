@@ -35,12 +35,12 @@ class Joueur:
         self.classement = nouveau_classement
 
 
-joueurs_test = [Joueur(["Valjean", "Jean", "12/12/1212", "M", 800]),
-                Joueur(["VanGrenier", "Archibald", "10/10/1876", "M", 167]),
-                Joueur(["LeGaullois", "Perceval", "09/04/1676", "M", 5000]),
-                Joueur(["Potter", "Harry", "07/08/1994", "M", 1000]),
-                Joueur(["Tyler", "Bonny", "10/05/1967", "F", 500]),
-                Joueur(["Pyrobarbare", "Bob", "06/09/1987", "M", 1200]),
-                Joueur(["Hallen", "Barry", "23/09/1982", "M", 3500]),
+joueurs_test = [Joueur(["So", "Wesley", "12/12/1212", "M", 800]),
+                Joueur(["Aronian", "Levon", "10/10/1876", "M", 1400]),
+                Joueur(["Carlsen", "Magnus", "09/04/1676", "M", 5000]),
+                Joueur(["Kasparov", "Garry", "07/08/1994", "M", 1000]),
+                Joueur(["Yifan", "Hou", "10/05/1967", "F", 1500]),
+                Joueur(["Caruana", "Fabiano", "06/09/1987", "M", 1200]),
+                Joueur(["Nakamura", "Hikaru", "23/09/1982", "M", 3500]),
                 Joueur(["Polgar", "Judith", "24/11/1956", "F", 2000])
                 ]
