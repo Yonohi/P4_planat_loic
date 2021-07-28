@@ -1,4 +1,4 @@
-from models.joueur import Joueur, joueurs_test
+from models.joueur import Joueur
 from models.tournoi import Tournoi
 from models.tour import Tour
 from vue.vue import Vue
@@ -279,7 +279,7 @@ class ControleurPrincipal:
         :param tournoi: tournament instance
         """
         self.obtenir_joueurs(tournoi)
-        # Line for registered players
+        # Line for registered players (add joueurs_test to import)
         # tournoi.joueurs = joueurs_test
         for joueur in tournoi.joueurs:
             joueur_serialise = self.serialisation_joueur(joueur)
