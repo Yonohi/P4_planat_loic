@@ -194,8 +194,8 @@ class Vue:
         print("\n\tRésumé des résultats:")
         for binome in binomes:
             for joueur in binome:
-                print(f"{joueur.nom} {joueur.prenom} " 
-                      f"a {joueur.points} points.")
+                print(f"{joueur.nom} {joueur.prenom}" 
+                      f" a {joueur.points} points.")
 
     @staticmethod
     def message_bienvenue():
