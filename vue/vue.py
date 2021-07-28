@@ -12,19 +12,23 @@ class Vue:
         """
         print("-------------------------\n"
               "Veuillez rentrer les informations du Tournoi.")
-        nom = input("Nom : ")
-        lieu = input("Lieu : ")
         while True:
             try:
+                nom = input("Nom : ")
+                if not nom:
+                    raise ValueError
+                lieu = input("Lieu : ")
+                if not lieu:
+                    raise ValueError
                 date_debut = input("Date JJ/MM/AAAA: ")
                 regex = r"^\d{2}/\d{2}/\d{4}$"
                 if re.match(regex, date_debut) is None:
                     raise ValueError
+                description = input("Description : ")
                 break
             except ValueError:
                 print("La donnée rentrée n'est pas correct."
-                      " Veuillez la ressaisir.")
-        description = input("Description : ")
+                      " Veuillez tout ressaisir.")
         return nom, lieu, date_debut, description
 
     @staticmethod
@@ -39,7 +43,11 @@ class Vue:
                 print("-------------------------\n"
                       f"Veuillez rentrer les informations du Joueur {numero}.")
                 nom = input("Nom : ")
+                if not nom:
+                    raise ValueError
                 prenom = input("Prénom : ")
+                if not prenom:
+                    raise ValueError
                 date_naissance = input("Date de naissance JJ/MM/AAAA: ")
                 regex = r"^\d{2}/\d{2}/\d{4}$"
                 if re.match(regex, date_naissance) is None:
@@ -472,7 +480,8 @@ class Vue:
                 else:
                     break
             except ValueError:
-                print("Vous n'avez pas saisi un nombre, veuillez recommencer.")
+                print("Vous n'avez pas saisi un nombre correct, "
+                      "veuillez recommencer.")
         return classement
 
     @staticmethod
