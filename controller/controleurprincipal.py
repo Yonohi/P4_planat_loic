@@ -278,9 +278,9 @@ class ControleurPrincipal:
         Allow to save players in the database
         :param tournoi: tournament instance
         """
-        # Line to activate manual capture of players
-        # self.obtenir_joueurs(tournoi)
-        tournoi.joueurs = joueurs_test
+        self.obtenir_joueurs(tournoi)
+        # Line for registered players
+        # tournoi.joueurs = joueurs_test
         for joueur in tournoi.joueurs:
             joueur_serialise = self.serialisation_joueur(joueur)
             query = Query()
@@ -355,7 +355,6 @@ class ControleurPrincipal:
                         self.lancement_tours(tournoi,
                                              nb=tournoi.nb_tour_en_cours,
                                              reprise=True)
-
             # Choice to have a report on ...
             elif choix_principal == 3:
                 choix_rapport = self.vue.menu_rapport()
