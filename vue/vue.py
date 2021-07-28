@@ -48,6 +48,8 @@ class Vue:
                 if sexe not in ["M", "F"]:
                     raise ValueError
                 classement = int(input("Classement : "))
+                if classement < 0:
+                    raise ValueError
                 return nom, prenom, date_naissance, sexe, classement
             except ValueError:
                 print("La donnée rentrée n'est pas correct."
@@ -184,7 +186,8 @@ class Vue:
         print("\n\tRésumé des résultats:")
         for binome in binomes:
             for joueur in binome:
-                print(f"{joueur.prenom} a {joueur.points} points.")
+                print(f"{joueur.nom} {joueur.prenom} " 
+                      f"a {joueur.points} points.")
 
     @staticmethod
     def message_bienvenue():
@@ -464,7 +467,10 @@ class Vue:
         while True:
             try:
                 classement = int(input("Classement : "))
-                break
+                if classement < 0:
+                    raise ValueError
+                else:
+                    break
             except ValueError:
                 print("Vous n'avez pas saisi un nombre, veuillez recommencer.")
         return classement
