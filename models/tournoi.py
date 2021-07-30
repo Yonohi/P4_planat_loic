@@ -6,7 +6,7 @@ class Tournoi:
     def __init__(self, infos_tournoi):
         self.nom = infos_tournoi[0]
         self.lieu = infos_tournoi[1]
-        self.date_debut = infos_tournoi[2]
+        self.dates = infos_tournoi[2]
         self.nombre_tours_prevus = 4
         self.joueurs = []
         self.joueurs_id = []

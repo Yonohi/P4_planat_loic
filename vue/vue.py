@@ -10,6 +10,8 @@ class Vue:
         Retrieves the various tournament information
         :return: information to create a tournament instance
         """
+        regex_date = r"^(0?[1-9]|[1-2][0-9]|3[01])/(0?[1-9]|1[012])/20\d{2}$"
+        dates = {}
         print("-------------------------\n"
               "Veuillez rentrer les informations du Tournoi.")
         while True:
@@ -20,16 +22,24 @@ class Vue:
                 lieu = input("Lieu : ")
                 if not lieu:
                     raise ValueError
-                date_debut = input("Date JJ/MM/AAAA: ")
-                regex = r"^\d{2}/\d{2}/\d{4}$"
-                if re.match(regex, date_debut) is None:
+                nb_jour = int(input("Sur combien de jour "
+                                    "se passera le tournoi? "))
+                if nb_jour <= 0 or nb_jour > 5:
+                    raise ValueError
+                for i in range(nb_jour):
+                    jour = input(f"Date Jour {i+1} JJ/MM/AAAA: ")
+                    if re.match(regex_date, jour) is None:
+                        raise ValueError
+                    dates[f"Jour{i+1}"] = jour
+                # Search same elements in dates
+                if len(set(dates.values())) < nb_jour:
                     raise ValueError
                 description = input("Description : ")
                 break
             except ValueError:
                 print("La donnée rentrée n'est pas correct."
                       " Veuillez tout ressaisir.")
-        return nom, lieu, date_debut, description
+        return nom, lieu, dates, description
 
     @staticmethod
     def demander_info_joueur(numero):
@@ -38,6 +48,7 @@ class Vue:
         :param numero: number of the player
         :return: information to create player instances
         """
+        regex_date = r"^(0?[1-9]|[1-2][0-9]|3[01])/(0?[1-9]|1[012])/20\d{2}$"
         while True:
             try:
                 print("-------------------------\n"
@@ -49,8 +60,7 @@ class Vue:
                 if not prenom:
                     raise ValueError
                 date_naissance = input("Date de naissance JJ/MM/AAAA: ")
-                regex = r"^\d{2}/\d{2}/\d{4}$"
-                if re.match(regex, date_naissance) is None:
+                if re.match(regex_date, date_naissance) is None:
                     raise ValueError
                 sexe = input("Sexe M/F: ").upper()
                 if sexe not in ["M", "F"]:
@@ -249,7 +259,10 @@ class Vue:
               "de la liste suivante:")
         i = 1
         for tournoi in liste_tournois:
-            print(f"\t{i}. {tournoi['nom']}")
+            print(f"\t{i}. {tournoi['nom']}     Date(s) :", end=" ")
+            for jour in tournoi["dates"]:
+                print(f"{tournoi['dates'][f'{jour}']}", end=" ")
+            print()
             i += 1
         while True:
             try:
@@ -344,7 +357,11 @@ class Vue:
         print("Veuillez sélectionner un tournoi dans la liste suivante:")
         liste_id = []
         for tournoi in table_tournaments:
-            print(f"\t{tournoi['id']}. {tournoi['nom']}")
+            print(f"\t{tournoi['id']}. {tournoi['nom']}"
+                  f" Type : {tournoi['type']}   Date(s) :", end=" ")
+            for jour in tournoi["dates"]:
+                print(f"{tournoi['dates'][f'{jour}']}", end=" ")
+            print()
             liste_id.append(tournoi['id'])
         while True:
             try:
@@ -385,7 +402,11 @@ class Vue:
         """
         print("Liste des tournois:")
         for tournoi in liste_tournois:
-            print(f"\t{tournoi['nom']} ")
+            print(f"\t{tournoi['nom']} {tournoi['lieu']}"
+                  f" Type : {tournoi['type']}   Date(s) :", end=" ")
+            for jour in tournoi["dates"]:
+                print(f"{tournoi['dates'][f'{jour}']}", end=" ")
+            print()
 
     # Choice 4
     @staticmethod

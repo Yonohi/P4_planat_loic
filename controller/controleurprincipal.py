@@ -70,7 +70,7 @@ class ControleurPrincipal:
         serialized_tournoi = {
             "nom": tournoi.nom,
             "lieu": tournoi.lieu,
-            "date_debut": tournoi.date_debut,
+            "dates": tournoi.dates,
             "nb tours prevus": tournoi.nombre_tours_prevus,
             "id_participants": tournoi.joueurs_id,
             "tours_effectues": tournoi.nb_tour_en_cours,
@@ -90,7 +90,7 @@ class ControleurPrincipal:
         """
         infos = [tournoi_serialise['nom'],
                  tournoi_serialise['lieu'],
-                 tournoi_serialise['date_debut'],
+                 tournoi_serialise['dates'],
                  tournoi_serialise['description']]
         tournoi = Tournoi(infos)
         tournoi.nombre_tours = tournoi_serialise["nb tours prevus"]
