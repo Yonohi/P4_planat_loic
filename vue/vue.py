@@ -48,7 +48,7 @@ class Vue:
         :param numero: number of the player
         :return: information to create player instances
         """
-        regex_date = r"^(0?[1-9]|[1-2][0-9]|3[01])/(0?[1-9]|1[012])/20\d{2}$"
+        regex_date = r"^(0?[1-9]|[1-2][0-9]|3[01])/(0?[1-9]|1[012])/(19|20)\d{2}$"
         while True:
             try:
                 print("-------------------------\n"
